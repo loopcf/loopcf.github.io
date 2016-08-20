@@ -82,6 +82,7 @@
   line-height: $tag-height
   text-align: center
   color: $tag-color
+  border-top: 1px solid $tag-border-top-color
   border-bottom: 1px solid $tag-border-color
   transition: color .15s linear, box-shadow .3s $time-function
   cursor: pointer
@@ -98,22 +99,14 @@
 #search-box
   position: relative
   height: $search-box-height
-  margin-bottom: 1px
-  &:before
-    @extend %icon
-    @extend %icon-search
-    position: absolute
-    top: 0
-    right: 15px
-    z-index: -1
-    font-size: 24px
-    line-height: $search-box-height
-    color: $search-box-placeholder
+  border-right: 1px solid #e5e8ec
+  border-bottom: 1px solid #e5e8ec
 
 
 #search-input
   width: 100%
   height: 100%
+  text-align: center
   padding: 20px 45px 20px 15px
   font-size: $search-box-font-size
   line-height: $search-box-height - 20px * 2
@@ -141,6 +134,7 @@
   padding-top: 15px
   background: $toc-bg
   overflow-y: auto
+  border-right: 1px solid #e5e8ec
   -webkit-overflow-scrolling: touch
   &:after
     content: ""
@@ -157,8 +151,9 @@
   position: relative
   float: left
   clear: both
-  margin: 5px 0
-  padding: 0 15px 0 32px
+  padding: 6px 15px 6px 15px
+  width: 100%
+  text-shadow: -1px 1px 0 rgba(125, 139, 153, 0.1)
   font-size: $toc-font-size
   line-height: $toc-line-height
   white-space: nowrap
@@ -167,17 +162,32 @@
   color: $toc-color
   overflow: hidden
   outline: none
-  &:before
-    position: absolute
-    top: 2px
-    left: 12px
-    z-index: 1
-    @extend %icon
-    @extend %icon-bullet
-    font-size: $toc-bullet-size
-    color: $toc-bullet-unread
-    transition: transform .15s linear
-  &:visited:before
-    color: $toc-bullet-read
-  &:hover:before
-    animation: joggle .6s linear
+  &:hover
+    background: rgba(43, 181, 92, 0.9)
+    color: #fff
+  &:hover > .toc__circle
+    border: 2px solid #fff
+  &:visited > .toc__circle
+    background: #fafafa
+  &:visited:hover > .toc__circle
+    background: rgba(242, 242, 242, 0.5)
+  &:active
+    color: #29a284
+    background: rgba(242, 242, 242, 0.5)
+    box-shadow: -1px 1px rgba(229, 232, 236, 0.9)
+  &:active > .toc__circle
+    background: rgba(242, 242, 242, 0.5)
+    border-color: #29a284
+
+.toc__circle
+  width: .75em
+  height: .75em
+  margin-right: 5px
+  border: 2px solid #9aa4af
+  border-radius: 50%
+  display: inline-block
+  -webkit-transition: border-color .35s
+  -moz-transition: border-color .35s
+  -ms-transition: border-color .35s
+  -o-transition: border-color .35s
+  transition: border-color .35s
